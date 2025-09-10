@@ -1,19 +1,17 @@
 package co.tpcreative.data.di
 
 import co.tpcreative.core.util.PagingConstants
+import co.tpcreative.data.BuildConfig
 import co.tpcreative.data.database.NewsDao
 import co.tpcreative.data.database.NewsDatabase
 import co.tpcreative.data.network.NewsApi
 import co.tpcreative.data.database.SourceDao
-import co.tpcreative.data.repository.FavoriteRepositoryImpl
-import co.tpcreative.data.repository.NewsRepositoryImpl
 import co.tpcreative.domain.repository.FavoriteRepository
 import co.tpcreative.domain.repository.NewsRepository
+import co.tpcreative.data.repository.FavoriteRepositoryImpl
+import co.tpcreative.data.repository.NewsRepositoryImpl
+import co.tpcreative.data.repository.SourceRepositoryImpl
 import co.tpcreative.domain.repository.SourceRepository
-import com.rafsan.newsapp.data.repository.SourceRepositoryImpl
-import com.rafsan.newsapp.domain.repository.FavoriteRepository
-import com.rafsan.newsapp.domain.repository.NewsRepository
-import com.rafsan.newsapp.domain.repository.SourceRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,7 +26,6 @@ object RepositoryModule {
     @Singleton
     @Named("ApiKey")
     fun provideApiKey(): String = BuildConfig.NEWS_API_KEY
-    
 
     @Provides
     @Singleton

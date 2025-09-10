@@ -1,14 +1,12 @@
-package com.rafsan.newsapp.data.repository
+package co.tpcreative.data.repository
 
 import co.tpcreative.core.util.Constants
+import co.tpcreative.data.BuildConfig
 import co.tpcreative.data.database.SourceDao
 import co.tpcreative.data.database.entity.SourceEntity
 import co.tpcreative.data.network.NewsApi
 import co.tpcreative.domain.model.NewsSource
 import co.tpcreative.domain.repository.SourceRepository
-import com.rafsan.newsapp.domain.model.NewsSource
-import com.rafsan.newsapp.domain.repository.SourceRepository
-import com.rafsan.newsapp.core.util.Constants
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 

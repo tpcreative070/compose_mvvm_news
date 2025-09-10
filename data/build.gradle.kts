@@ -22,6 +22,10 @@ android {
 
 
 
+    buildFeatures {
+        buildConfig = true // Enable BuildConfig generation
+    }
+
     val localProperties = Properties()
     val localPropertiesFile = rootProject.file("local.properties") // Use rootProject.file
     if (localPropertiesFile.exists()) {
@@ -29,16 +33,13 @@ android {
             localProperties.load(fis)
         }
     }
+
+
     // Define WEATHER_API_KEY in BuildConfig. Fallback to a placeholder if not found.
     val apiKey = localProperties.getProperty(
         "NEWS_API_KEY",
         "b35a937aac0b49a689fc5daaa5fc6a87"
     )
-
-    buildTypes.all {
-        buildConfigField("String", "NEWS_API_KEY", "\"${apiKey}\"")
-        buildConfigField("String", "BASE_URL", "\"https://newsapi.org/\"")
-    }
 
     buildTypes {
         release {
@@ -47,23 +48,25 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            // ... release specific configurations
+            buildConfigField("String", "NEWS_API_KEY", "\"${apiKey}\"")
+            buildConfigField("String", "BASE_URL", "\"https://newsapi.org/\"")
+        }
+        debug {
+            // ... debug specific configurations
+            buildConfigField("String", "NEWS_API_KEY", "\"${apiKey}\"")
+            buildConfigField("String", "BASE_URL", "\"https://newsapi.org/\"")
         }
     }
+
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = "17"
-    }
-
-    buildFeatures {
-
-        compose = true
-        viewBinding = true
-        dataBinding = true
-        buildConfig = true
-
     }
 }
 

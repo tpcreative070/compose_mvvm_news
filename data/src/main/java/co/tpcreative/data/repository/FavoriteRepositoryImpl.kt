@@ -1,10 +1,10 @@
 package co.tpcreative.data.repository
 
 import co.tpcreative.data.database.NewsDao
-import co.tpcreative.data.mapper.toDomain
-import co.tpcreative.data.mapper.toEntity
 import co.tpcreative.domain.model.NewsArticle
 import co.tpcreative.domain.repository.FavoriteRepository
+import co.tpcreative.data.mapper.toDomain
+import co.tpcreative.data.mapper.toEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

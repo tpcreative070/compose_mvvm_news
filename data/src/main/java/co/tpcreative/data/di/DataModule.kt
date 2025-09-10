@@ -2,6 +2,7 @@ package co.tpcreative.data.di
 
 import android.content.Context
 import androidx.room.Room
+import co.tpcreative.data.BuildConfig
 import co.tpcreative.data.database.MIGRATION_2_3
 import co.tpcreative.data.database.MIGRATION_3_4
 import co.tpcreative.data.database.NewsDao
@@ -18,7 +19,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
-
 
 @Module
 @InstallIn(SingletonComponent::class)

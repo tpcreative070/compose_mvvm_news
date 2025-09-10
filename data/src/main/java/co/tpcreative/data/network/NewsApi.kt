@@ -1,6 +1,5 @@
 package co.tpcreative.data.network
 
-
 import co.tpcreative.domain.model.NewsResponse
 import co.tpcreative.domain.model.NewsSourceResponse
 import retrofit2.Response
