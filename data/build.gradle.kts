@@ -4,7 +4,9 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
     kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -17,6 +19,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
+
+
 
     val localProperties = Properties()
     val localPropertiesFile = rootProject.file("local.properties") // Use rootProject.file
@@ -31,6 +35,11 @@ android {
         "b35a937aac0b49a689fc5daaa5fc6a87"
     )
 
+    buildTypes.all {
+        buildConfigField("String", "NEWS_API_KEY", "\"${apiKey}\"")
+        buildConfigField("String", "BASE_URL", "\"https://newsapi.org/\"")
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -41,11 +50,20 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
+    }
+
+    buildFeatures {
+
+        compose = true
+        viewBinding = true
+        dataBinding = true
+        buildConfig = true
+
     }
 }
 
@@ -62,7 +80,25 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.paging)
-    
+
+    // Paging
+    implementation(libs.androidx.paging.runtime)
+
+    // Retrofit & OkHttp
+
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Timber
+    implementation(libs.timber)
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

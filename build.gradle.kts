@@ -8,4 +8,22 @@ plugins {
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.serialization) apply false
 
+
+}
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+
+        classpath(libs.kotlin.gradle.plugin)
+
+    }
+}
+
+
+tasks.register("clean").configure {
+    delete("build")
 }
