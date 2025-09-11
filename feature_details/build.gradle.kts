@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
     kotlin("kapt")
 
     kotlin("plugin.serialization")
@@ -33,6 +34,11 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
@@ -51,6 +57,7 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.coil.compose)
+    implementation(libs.androidx.compose.runtime)
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)

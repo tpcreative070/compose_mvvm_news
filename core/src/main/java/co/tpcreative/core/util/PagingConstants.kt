@@ -1,9 +1,3 @@
-/*
- * *
- *  * Created by Rafsan Ahmad on 8/15/25, 1:11 PM
- *  * Copyright (c) 2025 . All rights reserved.
- *
- */
 
 package co.tpcreative.core.util
 

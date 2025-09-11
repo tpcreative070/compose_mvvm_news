@@ -5,8 +5,10 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    kotlin("kapt")
+    id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("org.jetbrains.kotlin.kapt")
+    id(libs.plugins.ksp.get().pluginId)
 }
 
 android {
@@ -73,7 +75,8 @@ android {
 dependencies {
     implementation(project(":core"))
     implementation(project(":domain"))
-
+    implementation(libs.androidx.compose.runtime)
+    implementation(libs.kotlinx.metadata.jvm)
     // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
@@ -81,8 +84,10 @@ dependencies {
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
+    ksp (libs.androidx.room.compiler)
+
     implementation(libs.androidx.room.paging)
+
 
     // Paging
     implementation(libs.androidx.paging.runtime)
