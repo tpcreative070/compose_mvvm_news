@@ -2,8 +2,9 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    kotlin("kapt")
-//    id("dagger.hilt.android.plugin")
+    id(libs.plugins.ksp.get().pluginId)
+    id ("dagger.hilt.android.plugin")
+    id ("kotlinx-serialization")
 }
 
 android {
@@ -54,7 +55,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.hilt.android)
     implementation(libs.androidx.compose.runtime)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

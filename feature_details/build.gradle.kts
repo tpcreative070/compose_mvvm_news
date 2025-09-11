@@ -2,9 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    kotlin("kapt")
-
-    kotlin("plugin.serialization")
+    id(libs.plugins.ksp.get().pluginId)
+    id ("dagger.hilt.android.plugin")
 }
 
 android {
@@ -69,7 +68,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.compose.material3.material3)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
 
     // Timber
     implementation(libs.timber)

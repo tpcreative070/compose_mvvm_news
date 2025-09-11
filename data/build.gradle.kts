@@ -5,10 +5,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
-    id("org.jetbrains.kotlin.kapt")
     id(libs.plugins.ksp.get().pluginId)
+    id ("kotlinx-serialization")
 }
 
 android {
@@ -79,7 +77,7 @@ dependencies {
     implementation(libs.kotlinx.metadata.jvm)
     // Hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
 
     // Room
     implementation(libs.androidx.room.runtime)
